@@ -1,5 +1,5 @@
-import { useRef, useState, Fragment } from "react";
-import { Prompt } from "react-router-dom";
+import { Fragment, useRef, useState } from "react";
+// import { Prompt } from 'react-router-dom';
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -26,15 +26,21 @@ const QuoteForm = props => {
 		setIsEntering(false);
 	};
 
-	const formFocusHandler = () => {
+	const formFocusedHandler = () => {
 		setIsEntering(true);
 	};
 
 	return (
 		<Fragment>
-			<Prompt when={isEntering} message={() => "Unsaved form entries will be lost"} />
+			{/* Prompt is currently not supported yet by v6 */}
+			{/* <Prompt
+        when={isEntering}
+        message={(location) =>
+          'Are you sure you want to leave? All your entered data will be lost!'
+        }
+      /> */}
 			<Card>
-				<form onFocus={formFocusHandler} className={classes.form} onSubmit={submitFormHandler}>
+				<form onFocus={formFocusedHandler} className={classes.form} onSubmit={submitFormHandler}>
 					{props.isLoading && (
 						<div className={classes.loading}>
 							<LoadingSpinner />
